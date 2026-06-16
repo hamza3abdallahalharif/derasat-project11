@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>جنوب أفريقيا - دليل شامل</title>
+  <link rel="icon" type="image/png" href="1.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #007A4D;
+      --gold:  #FFB612;
+      --red:   #DE3831;
+      --dark:  #0D1B14;
+      --mid:   #1C3A27;
+      --white: #FFFFFF;
+      --cream: #FDF8EF;
+      --light-green: #E8F5EE;
+      --text:  #2C2C2C;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Cairo', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    /* ── SINGLE NAVBAR ── */
+    .navbar {
+      background: var(--dark);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 16px rgba(0,0,0,.4);
+    }
+    .navbar .inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 900;
+      padding: 14px 0;
+      text-decoration: none;
+      letter-spacing: .5px;
+    }
+    .nav-logo img {
+      width: 34px;
+      height: 23px;
+      border-radius: 3px;
+      object-fit: cover;
+      box-shadow: 0 1px 5px rgba(0,0,0,.4);
+    }
+    .nav-logo .dot { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      padding: 16px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      display: block;
+      transition: color .2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 14px; right: 14px;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links .game-link a {
+      color: var(--gold);
+      background: rgba(255,182,18,.1);
+      border-radius: 6px;
+      margin: 8px 4px;
+      padding: 8px 12px;
+    }
+    .nav-links .game-link a:hover { background: rgba(255,182,18,.2); }
+    .nav-links .game-link a::after { display: none; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 60%, #0a2e1a 100%);
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 15% 50%, rgba(0,122,77,.3) 0%, transparent 55%),
+        radial-gradient(circle at 85% 20%, rgba(255,182,18,.12) 0%, transparent 50%);
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 60px 24px;
+      max-width: 740px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,182,18,.12);
+      border: 1px solid rgba(255,182,18,.35);
+      color: var(--gold);
+      padding: 7px 22px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+    .hero-flag {
+      width: 150px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 10px 40px rgba(0,0,0,.6);
+      margin: 0 auto 28px;
+      display: block;
+    }
+    .hero h1 {
+      font-family: 'Amiri', serif;
+      font-size: clamp(46px, 9vw, 90px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-sub { font-size: 16px; color: rgba(255,255,255,.6); line-height: 1.8; margin-bottom: 44px; max-width: 560px; margin-inline: auto; margin-bottom: 44px; }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+      background: rgba(255,255,255,.04);
+    }
+    .hero-stat {
+      flex: 1;
+      min-width: 120px;
+      padding: 20px 16px;
+      border-left: 1px solid rgba(255,255,255,.08);
+      text-align: center;
+    }
+    .hero-stat:last-child { border-left: none; }
+    .hero-stat .num { font-size: 28px; font-weight: 900; color: var(--gold); display: block; }
+    .hero-stat .lbl { font-size: 11px; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+    .container { max-width: 1160px; margin: auto; }
+    .sec-head { text-align: center; margin-bottom: 52px; }
+    .sec-tag {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      padding: 3px 14px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .sec-tag.gold { background: var(--gold); color: var(--dark); }
+    .sec-head h2 { font-family: 'Amiri', serif; font-size: clamp(26px, 4vw, 44px); margin-bottom: 10px; }
+    .sec-head p { font-size: 15px; color: #777; max-width: 580px; margin: auto; line-height: 1.8; }
+    .bar { width: 50px; height: 3px; background: linear-gradient(90deg, var(--green), var(--gold)); margin: 14px auto 0; border-radius: 2px; }
+
+    /* ── FACTS ── */
+    .s-dark { background: var(--dark); }
+    .s-dark .sec-head h2 { color: var(--white); }
+    .s-dark .sec-head p { color: rgba(255,255,255,.5); }
+    .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+    .fact-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,182,18,.15);
+      border-radius: 14px;
+      padding: 26px 18px;
+      text-align: center;
+      transition: transform .2s, border-color .2s;
+    }
+    .fact-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+    .fact-card .ic { font-size: 30px; margin-bottom: 10px; display: block; }
+    .fact-card h3 { color: var(--gold); font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .fact-card p { color: rgba(255,255,255,.65); font-size: 13px; line-height: 1.6; }
+
+    /* ── HISTORY TIMELINE ── */
+    .s-white { background: var(--white); }
+    .timeline { position: relative; padding-right: 28px; }
+    .timeline::before { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--green), var(--gold), var(--red)); border-radius: 2px; }
+    .tl-item { position: relative; padding-right: 32px; padding-bottom: 36px; }
+    .tl-item::before { content: ''; position: absolute; right: -8px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--green); border: 3px solid var(--white); box-shadow: 0 0 0 3px var(--green); }
+    .tl-year { display: inline-block; background: var(--green); color: var(--white); padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+    .tl-item h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+    .tl-item p { color: #555; font-size: 13px; line-height: 1.8; }
+
+    /* ── CULTURE ── */
+    .s-cream { background: var(--light-green); }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px; }
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 16px rgba(0,0,0,.07);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 36px rgba(0,0,0,.12); }
+    .card-top { height: 110px; display: flex; align-items: center; justify-content: center; font-size: 54px; }
+    .card-body { padding: 22px; }
+    .card-body h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .card-body p { color: #666; font-size: 13px; line-height: 1.8; }
+
+    /* ── PEOPLE ── */
+    .ethnic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; margin-bottom: 48px; }
+    .ethnic-card { border-radius: 14px; padding: 26px 18px; text-align: center; color: var(--white); }
+    .ethnic-card .pct { font-size: 44px; font-weight: 900; display: block; opacity: .9; }
+    .ethnic-card h3 { font-size: 18px; font-weight: 800; margin: 4px 0; }
+    .ethnic-card p { font-size: 12px; opacity: .75; line-height: 1.6; margin-top: 6px; }
+    .figures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+    .fig-item { display: flex; gap: 16px; background: var(--light-green); border-radius: 12px; padding: 20px; }
+    .fig-icon { width: 46px; height: 46px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .fig-text h3 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .fig-text p { font-size: 12px; color: #666; line-height: 1.6; }
+
+    /* ── NATURE ── */
+    .nature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .n-card { border-radius: 16px; overflow: hidden; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); transition: border-color .2s; }
+    .n-card:hover { border-color: var(--green); }
+    .n-card-top { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 64px; background: rgba(0,0,0,.15); }
+    .n-card-body { padding: 20px; }
+    .n-card-body h3 { color: var(--gold); font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .n-card-body p { color: rgba(255,255,255,.6); font-size: 12px; line-height: 1.8; }
+
+    /* ── TRADITIONS ── */
+    .trad-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+    .trad-item { display: flex; gap: 16px; background: var(--white); border-radius: 12px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+    .trad-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .trad-text h3 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .trad-text p { font-size: 12px; color: #666; line-height: 1.7; }
+
+    /* ── ECONOMY ── */
+    .econ-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; }
+    .econ-card { border: 2px solid var(--light-green); border-radius: 14px; padding: 26px 18px; text-align: center; transition: border-color .2s, transform .2s; }
+    .econ-card:hover { border-color: var(--green); transform: translateY(-4px); }
+    .econ-card .e-icon { font-size: 34px; margin-bottom: 10px; }
+    .econ-card h3 { font-size: 13px; color: var(--green); font-weight: 700; margin-bottom: 5px; }
+    .econ-card p { font-size: 12px; color: #666; line-height: 1.6; }
+
+    /* ── CITIES ── */
+    .cities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+    .city-card { border-radius: 16px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,.1); }
+    .city-top { height: 110px; display: flex; align-items: center; justify-content: center; font-size: 52px; position: relative; }
+    .city-badge { position: absolute; top: 10px; left: 10px; background: var(--gold); color: var(--dark); font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 20px; }
+    .city-body { background: var(--white); padding: 18px; }
+    .city-body h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+    .city-body p { color: #666; font-size: 12px; line-height: 1.7; }
+
+    /* ── GAME ── */
+    #game-wrap {
+      max-width: 680px;
+      margin: auto;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,182,18,.2);
+      border-radius: 20px;
+      padding: 36px;
+      text-align: center;
+    }
+    #game-wrap h2 { font-family: 'Amiri', serif; font-size: 28px; color: var(--gold); margin-bottom: 6px; }
+    #game-wrap .sub { color: rgba(255,255,255,.5); font-size: 13px; margin-bottom: 28px; }
+    #score-bar { display: flex; justify-content: space-between; background: rgba(255,255,255,.06); border-radius: 10px; padding: 11px 18px; margin-bottom: 22px; font-size: 13px; }
+    #score-bar span { color: rgba(255,255,255,.6); }
+    #score-bar strong { color: var(--gold); font-size: 17px; }
+    #prog { height: 5px; background: rgba(255,255,255,.1); border-radius: 3px; margin-bottom: 24px; overflow: hidden; }
+    #prog-fill { height: 100%; background: linear-gradient(90deg, var(--green), var(--gold)); border-radius: 3px; transition: width .4s; }
+    #q-text { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 24px; line-height: 1.6; min-height: 56px; }
+    #opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .opt-btn { background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.1); color: var(--white); padding: 14px 12px; border-radius: 12px; font-family: 'Cairo', sans-serif; font-size: 14px; cursor: pointer; transition: all .2s; }
+    .opt-btn:hover:not(:disabled) { background: rgba(0,122,77,.3); border-color: var(--green); transform: translateY(-2px); }
+    .opt-btn.correct { background: rgba(0,122,77,.4); border-color: var(--green); }
+    .opt-btn.wrong { background: rgba(222,56,49,.3); border-color: var(--red); }
+    #feedback { height: 28px; font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+    .fc { color: #4ade80; } .fw { color: #f87171; }
+    #next-btn, #restart-btn {
+      background: var(--green); color: var(--white); border: none;
+      padding: 12px 36px; border-radius: 30px; font-family: 'Cairo', sans-serif;
+      font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; display: none;
+    }
+    #next-btn:hover, #restart-btn:hover { background: #005c3a; }
+    #result { display: none; padding: 16px 0; }
+    #result .re { font-size: 68px; display: block; margin-bottom: 12px; }
+    #result h3 { font-size: 26px; color: var(--gold); margin-bottom: 10px; }
+    #result p { color: rgba(255,255,255,.65); font-size: 15px; margin-bottom: 20px; }
+    @media (max-width: 520px) { #opts { grid-template-columns: 1fr; } }
+
+    /* ── FEEDBACK FORM (inside game section) ── */
+    #feedback-form-wrap {
+      display: none;
+      margin-top: 32px;
+      border-top: 1px solid rgba(255,182,18,.2);
+      padding-top: 28px;
+      text-align: right;
+    }
+    #feedback-form-wrap h3 {
+      font-family: 'Amiri', serif;
+      font-size: 22px;
+      color: var(--gold);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    #feedback-form-wrap .fb-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      margin-bottom: 22px;
+      line-height: 1.8;
+    }
+    .fb-field { margin-bottom: 16px; }
+    .fb-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 7px;
+    }
+    .fb-field .req { color: var(--gold); margin-right: 3px; }
+    .fb-field input,
+    .fb-field textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 10px;
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      font-size: 14px;
+      font-family: 'Cairo', sans-serif;
+      outline: none;
+      transition: border-color .2s;
+      direction: rtl;
+    }
+    .fb-field input::placeholder,
+    .fb-field textarea::placeholder { color: rgba(255,255,255,.3); }
+    .fb-field input:focus,
+    .fb-field textarea:focus { border-color: var(--gold); }
+    .fb-field textarea { min-height: 100px; resize: vertical; }
+
+    #fb-send-btn {
+      width: 100%;
+      background: var(--gold);
+      color: var(--dark);
+      border: none;
+      padding: 13px 28px;
+      border-radius: 30px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: background .2s, opacity .2s;
+      margin-top: 6px;
+    }
+    #fb-send-btn:hover:not(:disabled) { background: #e6a300; }
+    #fb-send-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+    #fb-validation-note {
+      font-size: 12px;
+      color: rgba(255,255,255,.35);
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    #fb-success {
+      display: none;
+      background: rgba(0,122,77,.25);
+      border: 1px solid rgba(0,122,77,.5);
+      border-radius: 14px;
+      padding: 28px 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    #fb-success .fs-icon { font-size: 48px; display: block; margin-bottom: 10px; }
+    #fb-success h4 { font-size: 20px; color: #4ade80; margin-bottom: 8px; font-family: 'Amiri', serif; }
+    #fb-success p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.8; }
+
+    /* ── TEAM ── */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+    .team-card { background: var(--light-green); border-radius: 14px; padding: 26px 18px; text-align: center; border: 2px solid transparent; transition: all .22s; }
+    .team-card:hover { border-color: var(--green); transform: translateY(-4px); }
+    .avatar { width: 62px; height: 62px; border-radius: 50%; background: var(--green); color: var(--white); font-size: 24px; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+    .team-card h3 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+    .team-card p { font-size: 11px; color: var(--green); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); color: rgba(255,255,255,.55); text-align: center; padding: 36px 24px; font-size: 13px; line-height: 2.2; border-top: 3px solid var(--green); }
+    footer img { width: 64px; height: 42px; border-radius: 4px; margin-bottom: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.4); }
+    footer strong { color: var(--gold); }
+    footer a { color: var(--green); text-decoration: none; }
+
+    /* ── SCROLL UP ── */
+    #up { position: fixed; bottom: 26px; left: 26px; width: 42px; height: 42px; background: var(--green); color: var(--white); border: none; border-radius: 50%; font-size: 18px; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,.3); z-index: 999; transition: transform .2s; }
+    #up:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="inner">
+    <a href="#hero" class="nav-logo">
+      <img src="1.png" alt="علم جنوب أفريقيا" />
+      جنوب أفريقيا <span class="dot">●</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#history">التاريخ</a></li>
+      <li><a href="#culture">الثقافة</a></li>
+      <li><a href="#nature">الطبيعة</a></li>
+      <li><a href="#economy">الاقتصاد</a></li>
+      <li><a href="#cities">المدن</a></li>
+      <li class="game-link"><a href="#game">🎮 لعبة</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🌈 أرض قوس قزح &nbsp;·&nbsp; Rainbow Nation</div>
+    <img src="1.png" alt="علم جنوب أفريقيا" class="hero-flag" />
+    <h1>جنوب <em>أفريقيا</em></h1>
+    <p class="hero-sub">بلد يجمع ستين مليون نسمة من ثقافات متنوعة تحت سماء واحدة وعلم رسالته الوحدة في التنوع</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="num">11</span><span class="lbl">لغة رسمية</span></div>
+      <div class="hero-stat"><span class="num">60M</span><span class="lbl">نسمة</span></div>
+      <div class="hero-stat"><span class="num">1.2M</span><span class="lbl">كم²</span></div>
+      <div class="hero-stat"><span class="num">1994</span><span class="lbl">الديمقراطية</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="s-dark" id="facts">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag">نظرة عامة</span>
+      <h2>حقائق سريعة</h2>
+      <div class="bar"></div>
+    </div>
+    <div class="facts-grid">
+      <div class="fact-card"><span class="ic">🏛️</span><h3>العاصمة الإدارية</h3><p>بريتوريا (تشواني)</p></div>
+      <div class="fact-card"><span class="ic">🗺️</span><h3>المساحة</h3><p>١٫٢ مليون كم²</p></div>
+      <div class="fact-card"><span class="ic">👥</span><h3>السكان</h3><p>حوالي ٦٠ مليون نسمة</p></div>
+      <div class="fact-card"><span class="ic">💬</span><h3>اللغات</h3><p>١١ لغة رسمية منها الزولو والخوسا والإنجليزية</p></div>
+      <div class="fact-card"><span class="ic">💰</span><h3>العملة</h3><p>الراند الجنوب أفريقي ZAR</p></div>
+      <div class="fact-card"><span class="ic">⏰</span><h3>التوقيت</h3><p>UTC+2 (SAST)</p></div>
+      <div class="fact-card"><span class="ic">🏅</span><h3>كأس العالم</h3><p>٢٠١٠ — أول دولة أفريقية مستضيفة</p></div>
+      <div class="fact-card"><span class="ic">🌡️</span><h3>المناخ</h3><p>متنوع بين مداري وشبه جاف ومعتدل</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="s-white" id="history">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag">عبر الزمن</span>
+      <h2>التاريخ</h2>
+      <p>رحلة من أقدم الحضارات إلى عصر الديمقراطية</p>
+      <div class="bar"></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item"><span class="tl-year">قبل ١٠٠،٠٠٠ سنة</span><h3>🏹 أقدم البشر</h3><p>تُعدّ جنوب أفريقيا من أقدم مناطق الوجود البشري؛ عاش فيها شعب الخويسان وتركوا رسوماً صخرية رائعة في كهوف كثيرة.</p></div>
+      <div class="tl-item"><span class="tl-year">١٤٨٨ م</span><h3>⛵ الوصول البرتغالي</h3><p>أبحر بارثولوميو دياز وأطل لأول مرة على رأس الرجاء الصالح، مما منح المنطقة أهمية تجارية ضخمة على طريق الشرق.</p></div>
+      <div class="tl-item"><span class="tl-year">١٦٥٢ م</span><h3>🇳🇱 الاستعمار الهولندي</h3><p>أسّست شركة الهند الشرقية محطةً في كيب تاون. استقرّ الهولنديون وعُرفوا بـ"البوير" الذين طردوا الشعوب الأصلية من أراضيها.</p></div>
+      <div class="tl-item"><span class="tl-year">١٨٠٦ م</span><h3>🇬🇧 الاستعمار البريطاني</h3><p>سيطرت بريطانيا على مستعمرة الكيب، فقام البوير بالمسيرة الكبرى نحو الداخل فراراً من قوانينها.</p></div>
+      <div class="tl-item"><span class="tl-year">١٨٦٧ م</span><h3>💎 الماس والذهب</h3><p>أشعل اكتشاف الماس في كيمبرلي ثم الذهب في ويتواترسراند موجات هجرة ضخمة وحوّل البلاد إلى قبلة رأس المال الدولي.</p></div>
+      <div class="tl-item"><span class="tl-year">١٩٤٨ م</span><h3>⛓️ الفصل العنصري</h3><p>أرسى الحزب الوطني نظام الأبارتهايد الذي فرز البشر حسب ألوانهم وحرم الأغلبية السوداء من أبسط الحقوق لعقود.</p></div>
+      <div class="tl-item"><span class="tl-year">١٩٦٤ م</span><h3>🧑‍⚖️ سجن مانديلا</h3><p>حُكم على نيلسون مانديلا بالسجن المؤبد في قضية ريفونيا، فأصبح رمزاً عالمياً لمقاومة الظلم طوال ٢٧ عاماً.</p></div>
+      <div class="tl-item"><span class="tl-year">١٩٩٠ – ١٩٩٤ م</span><h3>🕊️ نهاية الأبارتهايد</h3><p>أُفرج عن مانديلا عام ١٩٩٠، وفي ١٩٩٤ فاز بأول انتخابات ديمقراطية حرة ليصبح أول رئيس أسود للبلاد.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section class="s-cream" id="culture">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag">الثقافة والفنون</span>
+      <h2>الثقافة</h2>
+      <p>تنوع استثنائي جعل جنوب أفريقيا تُلقّب بـ"أمة قوس قزح"</p>
+      <div class="bar"></div>
+    </div>
+    <div class="cards-grid">
+      <div class="card"><div class="card-top" style="background:linear-gradient(135deg,#007A4D22,#007A4D44)">🎵</div><div class="card-body"><h3>الموسيقى</h3><p>موسيقى المباكانغا والإيسيكاتامييا والجاز — أثّر موسيقيون مثل ميريام ماكيبا ولاديسميث بلاك مامبازو في العالم كله.</p></div></div>
+      <div class="card"><div class="card-top" style="background:linear-gradient(135deg,#FFB61222,#FFB61244)">🍖</div><div class="card-body"><h3>المطبخ</h3><p>البراّي (الشواء الجماعي) ركيزة الحياة الاجتماعية، إلى جانب البوبوتي وكيك الملو ودودة الموباني المشهورة.</p></div></div>
+      <div class="card"><div class="card-top" style="background:linear-gradient(135deg,#DE383122,#DE383144)">⚽</div><div class="card-body"><h3>الرياضة</h3><p>السبرينغبوكس رغبي فازوا ببطولة العالم أربع مرات. كرة القدم تحمل ثقلاً اجتماعياً هائلاً والكريكيت شعبية واسعة.</p></div></div>
+      <div class="card"><div class="card-top" style="background:linear-gradient(135deg,#44228822,#44228844)">🎨</div><div class="card-body"><h3>الفن والحرف</h3><p>خرز الزولو والنحت الندبيلي وصناعة السلال البسوتو والرسوم الصخرية للسان — فن يُصدَّر إلى متاحف العالم.</p></div></div>
+      <div class="card"><div class="card-top" style="background:linear-gradient(135deg,#22886622,#22886644)">📚</div><div class="card-body"><h3>الأدب</h3><p>ناديين غورديمر وجون كوتزي (نوبل للآداب) — كتابات تُجسّد معاناة الفصل العنصري وجماليات الخلاص.</p></div></div>
+      <div class="card"><div class="card-top" style="background:linear-gradient(135deg,#88441122,#88441144)">🏺</div><div class="card-body"><h3>الرقص والمسرح</h3><p>رقصة الغامبا الزولو وحفلات النساء البسوتو تُعبّر عن روح جماعية حية. كيب تاون تحتضن مهرجانات مسرحية دولية.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PEOPLE -->
+<section class="s-white" id="people">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag">التركيبة السكانية</span>
+      <h2>شعوب جنوب أفريقيا</h2>
+      <p>تتعايش مجموعات عرقية وثقافية عديدة في سلام نسبي</p>
+      <div class="bar"></div>
+    </div>
+    <div class="ethnic-grid">
+      <div class="ethnic-card" style="background:linear-gradient(135deg,#007A4D,#005c3a)"><span class="pct">80%</span><h3>الأفارقة السود</h3><p>الزولو والخوسا والسوتو والتسوانا وشعوب أخرى تتحدث لغات البانتو</p></div>
+      <div class="ethnic-card" style="background:linear-gradient(135deg,#8B4513,#6B3410)"><span class="pct">9%</span><h3>الملوّنون</h3><p>أصول مختلطة، يتمركزون في الكيب الغربية ولهم ثقافة وهوية خاصة</p></div>
+      <div class="ethnic-card" style="background:linear-gradient(135deg,#1a5276,#154360)"><span class="pct">8%</span><h3>البيض</h3><p>الأفريكانيون وأحفاد البريطانيين وأوروبيين آخرين</p></div>
+      <div class="ethnic-card" style="background:linear-gradient(135deg,#6c3483,#512e5f)"><span class="pct">3%</span><h3>الهنود والآسيويون</h3><p>جلبهم البريطانيون للسكك الحديدية وتمركزوا في كوازولو-ناتال</p></div>
+    </div>
+    <div class="figures-grid">
+      <div class="fig-item"><div class="fig-icon">👑</div><div class="fig-text"><h3>نيلسون مانديلا</h3><p>رمز المقاومة، أول رئيس أسود ١٩٩٤–١٩٩٩، نوبل السلام ١٩٩٣</p></div></div>
+      <div class="fig-item"><div class="fig-icon">✊</div><div class="fig-text"><h3>ستيف بيكو</h3><p>مؤسس حركة الوعي الأسود، استشهد في الاحتجاز ١٩٧٧</p></div></div>
+      <div class="fig-item"><div class="fig-icon">🎤</div><div class="fig-text"><h3>ميريام ماكيبا</h3><p>"أمّا أفريقا" — صوت أفريقيا ومدافعة عن حقوق الإنسان</p></div></div>
+      <div class="fig-item"><div class="fig-icon">🏆</div><div class="fig-text"><h3>ديزموند توتو</h3><p>ناشط حقوقي، نوبل السلام ١٩٨٤، رأس لجنة الحقيقة والمصالحة</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NATURE -->
+<section class="s-dark" id="nature">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag">الطبيعة والبيئة</span>
+      <h2>الطبيعة الخلاّبة</h2>
+      <p style="color:rgba(255,255,255,.5)">من غابات الكيب إلى سهول الكروغر</p>
+      <div class="bar"></div>
+    </div>
+    <div class="nature-grid">
+      <div class="n-card"><div class="n-card-top">🦁</div><div class="n-card-body"><h3>الخمسة الكبار</h3><p>الأسد والفيل والجاموس والفهد ووحيد القرن في متنزه كروغر الضخم (٢٠ ألف كم²).</p></div></div>
+      <div class="n-card"><div class="n-card-top">🌊</div><div class="n-card-body"><h3>رأس الرجاء الصالح</h3><p>ملتقى المحيطين الأطلسي والهندي — من أجمل مناطق العالم ومقصد الحيتان المهاجرة.</p></div></div>
+      <div class="n-card"><div class="n-card-top">🌺</div><div class="n-card-body"><h3>فينبوس</h3><p>أكثر من ٨٥٠٠ نوع نباتي، ٧٠٪ منها لا توجد في أي مكان آخر — تراث عالمي يونسكو.</p></div></div>
+      <div class="n-card"><div class="n-card-top">⛰️</div><div class="n-card-body"><h3>جبل الطاولة</h3><p>أحد أقدم الجبال وأحد عجائب الطبيعة السبع، يطلّ بهيبة استثنائية على كيب تاون.</p></div></div>
+      <div class="n-card"><div class="n-card-top">🐧</div><div class="n-card-body"><h3>البطريق الأفريقي</h3><p>مستعمرة بطاريق بولدرز قرب سيمونز تاون — طيور تتعايش مع البشر على شاطئ بحري ساحر.</p></div></div>
+      <div class="n-card"><div class="n-card-top">🏜️</div><div class="n-card-body"><h3>كالاهاري</h3><p>صحراء شاسعة يسكنها شعب الساني وحيوانات متكيّفة مع الجفاف تمتد عبر ثلاث دول.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRADITIONS -->
+<section class="s-cream" id="traditions">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag">الموروث والعادات</span>
+      <h2>التقاليد والأعراف</h2>
+      <p>عادات متجذّرة تعكس حكمة الأجداد وتُرسّخ الهوية</p>
+      <div class="bar"></div>
+    </div>
+    <div class="trad-grid">
+      <div class="trad-item"><div class="trad-icon">🤝</div><div class="trad-text"><h3>أوبونتو (Ubuntu)</h3><p>"أنا موجود لأن نحن موجودون" — فلسفة تُقدّم الجماعة وتُلزم بالتضامن والمسؤولية المشتركة.</p></div></div>
+      <div class="trad-item"><div class="trad-icon">🥩</div><div class="trad-text"><h3>البرّاي (Braai)</h3><p>الشواء الجماعي طقسٌ اجتماعي يجمع العائلات ويُرسّخ الهوية الجنوب أفريقية.</p></div></div>
+      <div class="trad-item"><div class="trad-icon">🎊</div><div class="trad-text"><h3>طقوس البلوغ الزولو</h3><p>طقوس انتقال رسمية تشمل العزلة والتعليم الأهلي والرقص للإعلان عن مرحلة الرشد.</p></div></div>
+      <div class="trad-item"><div class="trad-icon">💍</div><div class="trad-text"><h3>اللوبولا (Lobola)</h3><p>مهر يُدفع للعروس بالماشية — رمزٌ للاحترام والتحالف بين العائلتين لا "شراء".</p></div></div>
+      <div class="trad-item"><div class="trad-icon">🌿</div><div class="trad-text"><h3>الطب التقليدي</h3><p>المعالجون التقليديون "إزانيوسي" يمزجون الأعشاب والطقوس الروحانية إلى جانب الطب الحديث.</p></div></div>
+      <div class="trad-item"><div class="trad-icon">👗</div><div class="trad-text"><h3>الزي التقليدي</h3><p>خرز الزولو وأغطية البسوتو وأزياء الندبيلي المطرّزة بأنماط هندسية مبهرة.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ECONOMY -->
+<section class="s-white" id="economy">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag">الاقتصاد والتنمية</span>
+      <h2>الاقتصاد</h2>
+      <p>أكبر اقتصادات أفريقيا وأكثرها تصنيعاً</p>
+      <div class="bar"></div>
+    </div>
+    <div class="econ-grid">
+      <div class="econ-card"><div class="e-icon">💎</div><h3>التعدين</h3><p>البلاتين والذهب والماس والكروم — من أكبر المنتجين عالمياً</p></div>
+      <div class="econ-card"><div class="e-icon">🌾</div><h3>الزراعة</h3><p>الذرة وقصب السكر والكروم ونبيذ فاخر معروف دولياً</p></div>
+      <div class="econ-card"><div class="e-icon">🏭</div><h3>الصناعة</h3><p>سيارات وصلب وكيميائيات تُشكّل عماد الاقتصاد الصناعي</p></div>
+      <div class="econ-card"><div class="e-icon">✈️</div><h3>السياحة</h3><p>١٥ مليون سائح سنوياً لمناظرها الطبيعية ومدنها الكوزموبوليتانية</p></div>
+      <div class="econ-card"><div class="e-icon">💡</div><h3>الطاقة</h3><p>طاقة شمسية وهوائية ونووية في نقلة نوعية متسارعة</p></div>
+      <div class="econ-card"><div class="e-icon">📡</div><h3>التكنولوجيا</h3><p>جوهانسبرغ مركز تقني إفريقي ناشئ بشركات تقنية متسارعة</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section class="s-cream" id="cities">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag">أبرز المدن</span>
+      <h2>المدن الكبرى</h2>
+      <p>تنوع حضري يعكس روح البلاد</p>
+      <div class="bar"></div>
+    </div>
+    <div class="cities-grid">
+      <div class="city-card"><div class="city-top" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">🌆<div class="city-badge">أكبر مدينة</div></div><div class="city-body"><h3>جوهانسبرغ</h3><p>العاصمة الاقتصادية والقلب المالي للقارة — سويتو ومتحف الأبارتهايد والناطحات اللامعة.</p></div></div>
+      <div class="city-card"><div class="city-top" style="background:linear-gradient(135deg,#0d3b6e,#1a5276)">🏔️<div class="city-badge">الأجمل</div></div><div class="city-body"><h3>كيب تاون</h3><p>تحتضنها جبل الطاولة ومحيطان — مزيج من القديم والحديث في أروع المناظر الطبيعية.</p></div></div>
+      <div class="city-card"><div class="city-top" style="background:linear-gradient(135deg,#1a3c1a,#2d5a2d)">🏛️<div class="city-badge">العاصمة الإدارية</div></div><div class="city-body"><h3>بريتوريا</h3><p>مشهورة بأشجار الجكرندا الأرجوانية ومقر الحكومة والسفارات الدولية.</p></div></div>
+      <div class="city-card"><div class="city-top" style="background:linear-gradient(135deg,#1a1500,#3a3000)">🌊</div><div class="city-body"><h3>دربان</h3><p>أكبر ميناء أفريقي وجنّة الشواطئ الاستوائية والثقافة الهندية المتجذّرة.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GAME -->
+<section class="s-dark" id="game">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag gold">اختبر معلوماتك</span>
+      <h2>🎮 لعبة الأسئلة</h2>
+      <p style="color:rgba(255,255,255,.5)">١٢ سؤالاً عن تاريخ وثقافة جنوب أفريقيا</p>
+      <div class="bar"></div>
+    </div>
+
+    <div id="game-wrap">
+      <h2>اختبار جنوب أفريقيا</h2>
+      <p class="sub">جاوب واجمع أعلى نقاط!</p>
+
+      <!-- Quiz UI -->
+      <div id="score-bar">
+        <span>السؤال: <strong id="q-num">1</strong> / <strong id="q-tot">12</strong></span>
+        <span>النقاط: <strong id="score">0</strong></span>
+      </div>
+      <div id="prog"><div id="prog-fill" style="width:0%"></div></div>
+      <div id="q-text">جاري التحميل…</div>
+      <div id="opts"></div>
+      <div id="feedback"></div>
+      <button id="next-btn" onclick="nextQ()">التالي ←</button>
+
+      <!-- Result screen -->
+      <div id="result">
+        <span class="re" id="r-emoji">🎉</span>
+        <h3 id="r-title"></h3>
+        <p id="r-desc"></p>
+        <button id="restart-btn" onclick="restart()" style="display:inline-block">🔄 إعادة اللعب</button>
+      </div>
+
+      <!-- ── FEEDBACK FORM (appears after quiz ends) ── -->
+      <div id="feedback-form-wrap">
+        <h3>✉️ شاركنا رأيك</h3>
+        <p class="fb-sub">
+          أكملت الاختبار! أخبر حمزة برأيك في الموقع.<br>
+          <span style="color:rgba(255,182,18,.7);font-size:12px">كلا الحقلين مطلوبان قبل الإرسال</span>
+        </p>
+
+        <!-- Result summary badge -->
+        <div id="fb-result-badge" style="
+          background:rgba(255,182,18,.1);
+          border:1px solid rgba(255,182,18,.25);
+          border-radius:10px;
+          padding:12px 16px;
+          margin-bottom:20px;
+          font-size:13px;
+          color:rgba(255,255,255,.65);
+          text-align:center;
+        ">
+          نتيجتك: <strong id="fb-score-show" style="color:var(--gold);font-size:16px"></strong>
+        </div>
+
+        <div id="fb-form-fields">
+          <div class="fb-field">
+            <label>الاسم <span class="req">*</span></label>
+            <input type="text" id="fb-name" placeholder="اكتب اسمك هنا…" oninput="validateFb()" />
+          </div>
+          <div class="fb-field">
+            <label>رأيك في الموقع والاختبار <span class="req">*</span></label>
+            <textarea id="fb-msg" placeholder="كيف وجدت الموقع؟ هل استمتعت بالاختبار؟ أي اقتراحات؟" oninput="validateFb()"></textarea>
+          </div>
+          <button id="fb-send-btn" onclick="sendFeedback()" disabled>📨 إرسال الرأي</button>
+          <p id="fb-validation-note">أكمل الاسم والرأي أولاً لتفعيل الإرسال</p>
+        </div>
+
+        <div id="fb-success">
+          <span class="fs-icon">✅</span>
+          <h4>شكراً جزيلاً!</h4>
+          <p>وصل رأيك إلى حمزة على بريده الإلكتروني.<br>نسعد دائماً بملاحظاتكم!</p>
+        </div>
+      </div>
+      <!-- ── END FEEDBACK FORM ── -->
+
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="s-white" id="team">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-tag">مُعدّو المشروع</span>
+      <h2>فريق العمل</h2>
+      <p>الطلاب المتميزون الذين أعدّوا هذا الدليل الشامل</p>
+      <div class="bar"></div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card"><div class="avatar">ح</div><h3>حمزة الشريف</h3><p>عضو الفريق</p></div>
+      <div class="team-card"><div class="avatar">ح</div><h3>حمزة منصور</h3><p>عضو الفريق</p></div>
+      <div class="team-card"><div class="avatar">ع</div><h3>علي جعفر</h3><p>عضو الفريق</p></div>
+      <div class="team-card"><div class="avatar">م</div><h3>معاذ عيد</h3><p>عضو الفريق</p></div>
+      <div class="team-card"><div class="avatar">م</div><h3>مصطفى الملط</h3><p>عضو الفريق</p></div>
+      <div class="team-card"><div class="avatar">ع</div><h3>عمر عابد</h3><p>عضو الفريق</p></div>
+      <div class="team-card"><div class="avatar">س</div><h3>سعيد جاد</h3><p>عضو الفريق</p></div>
+      <div class="team-card"><div class="avatar">ي</div><h3>ياسين زكي</h3><p>عضو الفريق</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="1.png" alt="علم جنوب أفريقيا" /><br>
+  <strong>جنوب أفريقيا</strong> — أرض قوس قزح<br>
+  مشروع تعليمي أعدّه طلاب الفريق · جميع الحقوق محفوظة &copy; ٢٠٢٥<br>
+  <span style="font-size:12px">
+    <a href="#hero">الرئيسية</a> · <a href="#history">التاريخ</a> · <a href="#culture">الثقافة</a> · <a href="#nature">الطبيعة</a> · <a href="#game">اللعبة</a>
+  </span>
+</footer>
+
+<button id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  /* ── Scroll-up button ── */
+  window.addEventListener('scroll', () => {
+    document.getElementById('up').style.display = window.scrollY > 400 ? 'flex' : 'none';
+  });
+
+  /* ── Quiz data ── */
+  const qs = [
+    { q:"ما هي عاصمة جنوب أفريقيا الإدارية؟", opts:["كيب تاون","دربان","بريتوريا","جوهانسبرغ"], ans:2 },
+    { q:"كم عدد اللغات الرسمية في جنوب أفريقيا؟", opts:["٥","٩","١١","١٤"], ans:2 },
+    { q:"ما اسم نظام التمييز العنصري الذي انتهى ١٩٩٤؟", opts:["الاستعمار","الأبارتهايد","الانتداب","الحظر"], ans:1 },
+    { q:"من كان أول رئيس أسود لجنوب أفريقيا؟", opts:["ديزموند توتو","ستيف بيكو","نيلسون مانديلا","تابو مبيكي"], ans:2 },
+    { q:"أيُّ جبل يُشرف على مدينة كيب تاون؟", opts:["جبل كينيا","جبل الطاولة","كليمنجارو","جبل أطلس"], ans:1 },
+    { q:"ماذا تعني كلمة أوبونتو تقريباً؟", opts:["الفرد أولاً","الحرية المطلقة","أنا موجود لأن نحن موجودون","القوة في الثروة"], ans:2 },
+    { q:"في أيّ عام استضافت جنوب أفريقيا كأس العالم؟", opts:["٢٠٠٦","٢٠١٠","٢٠١٤","٢٠١٨"], ans:1 },
+    { q:"ما هو البرّاي في الثقافة الجنوب أفريقية؟", opts:["رقصة تقليدية","نوع من الزي","الشواء الجماعي","حفل الزواج"], ans:2 },
+    { q:"أين يلتقي المحيطان الأطلسي والهندي؟", opts:["شاطئ دربان","جزيرة روبن","رأس الرجاء الصالح","ميناء جوهانسبرغ"], ans:2 },
+    { q:"ما الاسم الشعبي لجنوب أفريقيا بسبب تنوعها؟", opts:["أرض الأسود","أمة قوس قزح","قلب أفريقيا","أرض الذهب"], ans:1 },
+    { q:"كم عاماً قضى مانديلا في السجن؟", opts:["١٥","٢٠","٢٧","٣٣"], ans:2 },
+    { q:"ما الفلسفة الأفريقية التي تُقدّم الجماعة على الفرد؟", opts:["الهرم","الأوبونتو","الكروّ","السفاري"], ans:1 },
+  ];
+
+  let cur = 0, sc = 0, done = false;
+
+  function load() {
+    done = false;
+    const q = qs[cur];
+    document.getElementById('q-num').textContent = cur + 1;
+    document.getElementById('q-tot').textContent = qs.length;
+    document.getElementById('score').textContent = sc;
+    document.getElementById('prog-fill').style.width = ((cur / qs.length) * 100) + '%';
+    document.getElementById('q-text').textContent = q.q;
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('feedback').className = '';
+    document.getElementById('next-btn').style.display = 'none';
+    const o = document.getElementById('opts');
+    o.innerHTML = '';
+    q.opts.forEach((opt, i) => {
+      const b = document.createElement('button');
+      b.className = 'opt-btn';
+      b.textContent = opt;
+      b.onclick = () => pick(i, b);
+      o.appendChild(b);
+    });
+  }
+
+  function pick(idx, btn) {
+    if (done) return;
+    done = true;
+    const q = qs[cur];
+    document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+    const fb = document.getElementById('feedback');
+    if (idx === q.ans) {
+      btn.classList.add('correct');
+      sc++;
+      document.getElementById('score').textContent = sc;
+      fb.textContent = '✅ إجابة صحيحة!';
+      fb.className = 'fc';
+    } else {
+      btn.classList.add('wrong');
+      document.querySelectorAll('.opt-btn')[q.ans].classList.add('correct');
+      fb.textContent = '❌ إجابة خاطئة!';
+      fb.className = 'fw';
+    }
+    if (cur < qs.length - 1) {
+      document.getElementById('next-btn').style.display = 'inline-block';
+    } else {
+      setTimeout(showResult, 900);
+    }
+  }
+
+  function nextQ() { cur++; load(); }
+
+  function showResult() {
+    ['q-text','opts','feedback','next-btn','score-bar','prog'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+
+    const p = sc / qs.length;
+    let e = '🌟', t = '';
+    if      (p >= .9) { e = '🏆'; t = 'ممتاز! أنت خبير جنوب أفريقيا!'; }
+    else if (p >= .7) { e = '🎉'; t = 'رائع! معلوماتك ممتازة!'; }
+    else if (p >= .5) { e = '👏'; t = 'جيد! تعرّفت على الكثير!'; }
+    else              { e = '📚'; t = 'استمر في التعلّم!'; }
+
+    document.getElementById('r-emoji').textContent = e;
+    document.getElementById('r-title').textContent = t;
+    document.getElementById('r-desc').textContent  = `حصلت على ${sc} من ${qs.length} إجابة صحيحة.`;
+    document.getElementById('result').style.display = 'block';
+
+    /* Show feedback form */
+    document.getElementById('fb-score-show').textContent = `${sc} / ${qs.length}`;
+    document.getElementById('feedback-form-wrap').style.display = 'block';
+    document.getElementById('fb-form-fields').style.display = 'block';
+    document.getElementById('fb-success').style.display = 'none';
+    document.getElementById('fb-name').value = '';
+    document.getElementById('fb-msg').value  = '';
+    validateFb();
+  }
+
+  function restart() {
+    cur = 0; sc = 0;
+    ['q-text','opts','feedback','score-bar','prog'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = '';
+    });
+    document.getElementById('opts').style.display = 'grid';
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('feedback-form-wrap').style.display = 'none';
+    load();
+  }
+
+  /* ── Feedback form logic ── */
+  function validateFb() {
+    const name = document.getElementById('fb-name').value.trim();
+    const msg  = document.getElementById('fb-msg').value.trim();
+    const btn  = document.getElementById('fb-send-btn');
+    const note = document.getElementById('fb-validation-note');
+    const ok   = name.length > 0 && msg.length > 0;
+    btn.disabled = !ok;
+    note.style.display = ok ? 'none' : 'block';
+  }
+
+  async function sendFeedback() {
+    const name = document.getElementById('fb-name').value.trim();
+    const msg  = document.getElementById('fb-msg').value.trim();
+    if (!name || !msg) return;
+
+    const btn = document.getElementById('fb-send-btn');
+    btn.disabled = true;
+    btn.textContent = '⏳ جاري الإرسال…';
+
+    try {
+      const res = await fetch('https://formspree.io/f/xrevdzyz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name:          name,
+          feedback:      msg,
+          quiz_score:    `${sc} / ${qs.length}`,
+          _subject:      `رأي من ${name} — اختبار جنوب أفريقيا (${sc}/${qs.length})`
+        })
+      });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        document.getElementById('fb-form-fields').style.display = 'none';
+        document.getElementById('fb-success').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = '📨 إرسال الرأي';
+        alert('حدث خطأ، حاول مرة أخرى.');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = '📨 إرسال الرأي';
+      alert('خطأ في الاتصال، تحقق من الإنترنت وحاول مجدداً.');
+    }
+  }
+
+  load();
+</script>
+</body>
+</html>
